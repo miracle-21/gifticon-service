@@ -2,6 +2,7 @@ from django.db import models
 
 
 class User(models.Model):
+    name   = models.CharField(max_length = 200)
 
     class Meta():
         db_table = 'users'
@@ -16,11 +17,11 @@ class Product(models.Model):
         db_table = 'products'
 
 
-class UserWaiting(models.Model):
-    user          = models.ForeignKey('User', on_delete = models.CASCADE)
-    product       = models.ForeignKey('Product', on_delete = models.CASCADE)
-    wating_number = models.IntegerField()
+class Waiting(models.Model):
+    user    = models.ForeignKey(User, on_delete = models.CASCADE)
+    product = models.ForeignKey(Product, on_delete = models.CASCADE)
+    waiting  = models.IntegerField()
 
     class Meta():
-        db_table = 'user_waitings'
+        db_table = 'waitings'
         
